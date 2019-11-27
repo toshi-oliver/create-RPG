@@ -1,6 +1,6 @@
 class Brave
-  attr_reader :name, :hp, :offense, :defense
-  attr_writer :hp
+  attr_reader :name, :offense, :defense
+  attr_accessor :hp
 
   def initialize(**params)
     @name = params[:name]
