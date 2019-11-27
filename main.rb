@@ -1,4 +1,8 @@
 class Brave
+  attr_reader :name
+  attr_reader :hp
+  attr_reader :offense
+  attr_reader :defense
 
   def initialize(**params)
     @name = params[:name]
@@ -6,23 +10,6 @@ class Brave
     @offense = params[:offense]
     @defense = params[:defense]
   end
-
-  def name
-    @name
-  end
-
-  def hp
-    @hp
-  end
-
-  def offense
-    @offense
-  end
-
-  def defense
-    @defense
-  end
-
 end
 
 brave = Brave.new(name:"トシー", hp:500, offense:150, defense:100)
