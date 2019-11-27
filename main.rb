@@ -1,10 +1,10 @@
 class Brave
 
-  def initialize(name:, hp:, offense:, defense:)
-    @name = name
-    @hp = hp
-    @offense = offense
-    @defense = defense
+  def initialize(**params)
+    @name = params[:name]
+    @hp = params[:hp]
+    @offense = params[:offense]
+    @defense = params[:defense]
   end
 
   def name
