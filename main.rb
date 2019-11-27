@@ -1,8 +1,6 @@
 class Brave
-  attr_reader :name
-  attr_reader :hp
-  attr_reader :offense
-  attr_reader :defense
+  attr_reader :name, :hp, :offense, :defense
+  attr_writer :hp
 
   def initialize(**params)
     @name = params[:name]
@@ -10,9 +8,10 @@ class Brave
     @offense = params[:offense]
     @defense = params[:defense]
   end
+
 end
 
-brave = Brave.new(name:"トシー", hp:500, offense:150, defense:100)
+brave = Brave.new(name:"トシー", hp: 500, offense: 150, defense: 100)
 
 puts <<~TEXT
 NAME：#{brave.name}
@@ -20,3 +19,5 @@ HP：#{brave.hp}
 OFFENSE：#{brave.offense}
 DEFENSE：#{brave.defense}
 TEXT
+
+brave.hp -= 30
