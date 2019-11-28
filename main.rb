@@ -54,6 +54,9 @@ class Brave
       damage = params[:damage]
 
       target.hp -= damage
+
+      target.hp = 0 if target.hp < 0
+
       puts "#{target.name}は#{damage}のダメージを受けた"
     end
 
@@ -126,6 +129,9 @@ class Monster
     character = params[:character]
 
     character.hp -= damage
+
+    character.hp = 0 if character.hp < 0
+
     puts "#{character.name}は#{damage}のダメージを受けた"
   end
 
@@ -136,5 +142,11 @@ monster = Monster.new(name: "ズライム", hp: 250, offense: 200, defense: 100)
 
 loop do
   brave.attack(monster)
+
+  break if monster.hp <= 0
+
   monster.attack(brave)
+
+  break if brave.hp <= 0
+
 end
