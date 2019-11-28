@@ -121,6 +121,14 @@ class Monster
       puts "#{character.name}は#{damage}のダメージを受けた"
     end
 
+  def cause_damage(**params)
+    damage = params[:damage]
+    character = params[:character]
+
+    character.hp -= damage
+    puts "#{character.name}は#{damage}のダメージを受けた"
+  end
+
 end
 
 brave = Brave.new(name: "トシー", hp: 500, offense: 250, defense: 100)
