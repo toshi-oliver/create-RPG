@@ -134,5 +134,7 @@ end
 brave = Brave.new(name: "トシー", hp: 500, offense: 250, defense: 100)
 monster = Monster.new(name: "ズライム", hp: 250, offense: 200, defense: 100)
 
-brave.attack(monster)
-monster.attack(brave)
+loop do
+  brave.attack(monster)
+  monster.attack(brave)
+end
