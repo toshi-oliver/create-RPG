@@ -1,17 +1,6 @@
-class Character
-  attr_reader :offense, :defense
-  attr_accessor :hp, :name
-
-  def initialize(**params)
-    @name = params[:name]
-    @hp = params[:hp]
-    @offense = params[:offense]
-    @defense = params[:defense]
-  end
-end
+require './character'
 
 class Brave < Character
-
   SPECIAL_ATTACK_CONSTANT = 1.5
 
   def attack(monster)
@@ -21,7 +10,7 @@ class Brave < Character
     damage = calculate_damage(target: monster, attack_type: attack_type)
     cause_damage(target: monster, damage: damage)
 
-    puts "#{@name}の残りHPは#{monster.hp}だ"
+    puts "#{monster.name}の残りHPは#{monster.hp}だ"
   end
 
   private
@@ -54,7 +43,6 @@ class Brave < Character
       damage = params[:damage]
 
       target.hp -= damage
-
       target.hp = 0 if target.hp < 0
 
       puts "#{target.name}は#{damage}のダメージを受けた"
@@ -73,10 +61,10 @@ class Monster < Character
 
   def initialize(**params)
     super(
-      name = params[:name],
-      hp = params[:hp],
-      offense = params[:offense],
-      defense = params[:defense]
+      name: params[:name],
+      hp: params[:hp],
+      offense: params[:offense],
+      defense: params[:defense]
     )
 
     @transform_flag = false
