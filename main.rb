@@ -1,27 +1,12 @@
-require './brave.rb'
-require './monster.rb'
+require './brave'
+require './monster'
+require './games_controller'
 
+# GamesControllerクラスをインスタンス化
+games_controller = GamesController.new
 
-brave = Brave.new(name: "トシー", hp: 500, offense: 250, defense: 100)
-monster = Monster.new(name: "ズライム", hp: 250, offense: 200, defense: 100)
+terry = Brave.new(name: "テリー", hp: 500, offense: 150, defense: 100)
+slime = Monster.new(name: "スライム", hp: 250, offense: 200, defense: 100)
 
-loop do
-  brave.attack(monster)
-  break if monster.hp <= 0
-
-  monster.attack(brave)
-  break if brave.hp <= 0
-end
-
-battle_result = brave.hp > 0
-
-if battle_result
-  exp = (monster.offense + monster.defense) * 2
-  gold = (monster.offense + monster.defense) * 3
-  puts "#{brave.name}はたたかいに勝った"
-  puts "#{exp}の経験値と#{gold}ゴールドを獲得した"
-else
-
-  puts "#{brave.name}はたたかいに負けた"
-  puts "目の前が真っ暗になった"
-end
+# GamesControllerクラスのbattleメソッドを使用
+games_controller.battle(brave: terry, monster: slime)

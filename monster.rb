@@ -58,15 +58,15 @@ class Monster < Character
       @offense *= POWER_UP_RATE
     end
 
-  def cause_damage(**params)
-    damage = params[:damage]
-    target = params[:target]
+    def cause_damage(**params)
+      damage = params[:damage]
+      target = params[:target]
 
-    target.hp -= damage
+      target.hp -= damage
 
-    target.hp = 0 if target.hp < 0
+      target.hp = 0 if target.hp < 0
 
-    puts "#{target.name}は#{damage}のダメージを受けた"
-  end
+      puts "#{target.name}は#{damage}のダメージを受けた"
+    end
 
 end
