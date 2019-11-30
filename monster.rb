@@ -23,12 +23,12 @@ class Monster < Character
       transform
     end
 
-    puts "#{@name}の攻撃"
 
     damage = calculate_damage(brave)
     cause_damage(damage: damage, target: brave)
 
-    puts "#{brave.name}の残りHPは#{brave.hp}だ"
+    attack_message(attack_type: attack_type)
+    #puts "#{brave.name}の残りHPは#{brave.hp}だ"
   end
 
   private
@@ -42,31 +42,21 @@ class Monster < Character
       target = params[:target]
 
       target.hp -= damage
+      target.hp = 0 if target.hp < 0
 
-      puts "#{target.name}は#{damage}のダメージを受けた"
+      #puts "#{target.name}は#{damage}のダメージを受けた"
     end
 
     def transform
       transform_name = "ドラゴン"
 
-      puts <<~EOS
+      #puts <<~EOS
       #{@name}は怒っている
       #{@name}はドラゴンに変身した
-      EOS
+      #EOS
 
       @name = transform_name
       @offense *= POWER_UP_RATE
-    end
-
-    def cause_damage(**params)
-      damage = params[:damage]
-      target = params[:target]
-
-      target.hp -= damage
-
-      target.hp = 0 if target.hp < 0
-
-      puts "#{target.name}は#{damage}のダメージを受けた"
     end
 
 end
