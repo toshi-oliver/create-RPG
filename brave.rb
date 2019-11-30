@@ -1,6 +1,7 @@
 require './character'
 
 class Brave < Character
+
   SPECIAL_ATTACK_CONSTANT = 1.5
 
   def attack(monster)
@@ -10,7 +11,6 @@ class Brave < Character
 
     attack_message(attack_type: attack_type)
     damage_message(target: monster, damage: damage)
-    #puts "#{monster.name}の残りHPは#{monster.hp}だ"
   end
 
   private
@@ -19,11 +19,9 @@ class Brave < Character
       attack_num = rand(4)
 
       if attack_num == 0
-        #puts "必殺攻撃"
         "special_attack"
       else
-        #puts "通常攻撃"
-        "nomal_attack"
+        "normal_attack"
       end
     end
 
@@ -39,17 +37,14 @@ class Brave < Character
     end
 
     def cause_damage(**params)
-      target = params[:target]
       damage = params[:damage]
+      target = params[:target]
 
       target.hp -= damage
       target.hp = 0 if target.hp < 0
-
-      #puts "#{target.name}は#{damage}のダメージを受けた"
     end
 
     def calculate_special_attack
       @offense * SPECIAL_ATTACK_CONSTANT
     end
-
 end
