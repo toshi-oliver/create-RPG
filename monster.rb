@@ -25,10 +25,11 @@ class Monster < Character
 
 
     damage = calculate_damage(brave)
-    cause_damage(damage: damage, target: brave)
+    cause_damage(target: brave, damage: damage)
 
-    attack_message(attack_type: attack_type)
+    attack_message
     #puts "#{brave.name}の残りHPは#{brave.hp}だ"
+    damage_message(target: brave, damage: damage)
   end
 
   private

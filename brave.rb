@@ -9,6 +9,7 @@ class Brave < Character
     cause_damage(target: monster, damage: damage)
 
     attack_message(attack_type: attack_type)
+    damage_message(target: monster, damage: damage)
     #puts "#{monster.name}の残りHPは#{monster.hp}だ"
   end
 
